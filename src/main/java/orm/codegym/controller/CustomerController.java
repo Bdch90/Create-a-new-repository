@@ -11,9 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import orm.codegym.model.Customer;
 import orm.codegym.service.impl.CustomerServiceImpl;
 
-import java.util.Optional;
-import java.util.List;
-
 @Controller
 public class CustomerController {
 
@@ -39,7 +36,7 @@ public class CustomerController {
 
     @GetMapping("/customers")
     public ModelAndView listCustomers(){
-        List<Customer> customers = customerService.findAll();
+        Iterable<Customer> customers = customerService.findAll();
         ModelAndView modelAndView = new ModelAndView("/customer/list");
         modelAndView.addObject("customers", customers);
         return modelAndView;
